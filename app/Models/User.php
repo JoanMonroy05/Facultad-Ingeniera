@@ -47,4 +47,15 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function estudiante()
+    {
+        return $this->hasOne(Estudiante::class);
+    }
+
+    public function docente()
+    {
+        return $this->hasOne(Docente::class);
+    }
+
 }
