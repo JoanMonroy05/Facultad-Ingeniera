@@ -7,7 +7,7 @@
         {{-- Mensaje de bienvenida --}}
         <div class="bg-white rounded-lg shadow p-6">
             <h2 class="text-2xl font-bold text-gray-800">
-                ¡Bienvenido, {{ Auth::user()->name }}! 👋
+                ¡Bienvenido, {{ Auth::user()->getNombreCompletoAttribute() }}!
             </h2>
             <p class="text-gray-600 mt-2">
                 Rol actual: <span class="font-semibold text-blue-600">

@@ -19,7 +19,7 @@
             <div class="pt-4 pb-2 text-xs font-semibold text-blue-300 uppercase">
                 Administración
             </div>
-            <a href="#"
+            <a href="{{ route('estudiantes.index') }}"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('estudiantes.*') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-user-graduate mr-2"></i> Estudiantes
             </a>

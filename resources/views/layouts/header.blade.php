@@ -19,7 +19,7 @@
             <button @click="open = !open"
                 class="flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition">
                 <div class="text-right">
-                    <p class="text-sm font-medium text-gray-700">{{ Auth::user()->name }}</p>
+                    <p class="text-sm font-medium text-gray-700">{{ Auth::user()->getNombreCompletoAttribute() }}</p>
                     <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center">
