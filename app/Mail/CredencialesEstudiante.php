@@ -31,7 +31,7 @@ class CredencialesEstudiante extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Credenciales Estudiante',
+            subject: 'Credenciales de Acceso',
         );
     }
 

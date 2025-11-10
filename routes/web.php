@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\DocenteController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta al dashboard principal (solo usuarios verificados)
@@ -20,6 +21,7 @@ Route::middleware('auth')->group(function () {
 // 🔐 Rutas para administradores
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('estudiantes', EstudianteController::class);
+    Route::resource('docentes', DocenteController::class);
 });
 
 require __DIR__.'/auth.php';
