@@ -39,7 +39,7 @@
 <div class="flex items-center">
     <label for="segundo_apellido" class="block text-gray-700 font-semibold w-32">Segundo Apellido</label>
     <input type="text" name="segundo_apellido" class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
-        placeholder="Ingrese el segundo apellido (opcional)"
+        placeholder="Ingrese el segundo apellido" required
         value="{{ old('segundo_apellido', $estudiante->user->segundo_apellido ?? '') }}">
 </div>
 @error('segundo_apellido')

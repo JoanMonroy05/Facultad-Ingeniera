@@ -15,7 +15,6 @@
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="px-4 py-2 text-left">ID</th>
-                        <th class="px-4 py-2 text-left">Codigo</th>
                         <th class="px-4 py-2 text-left">Nombre</th>
                         <th class="px-4 py-2 text-left">Apellido</th>
                         <th class="px-4 py-2 text-left">Especialidad</th>
@@ -26,7 +25,6 @@
                     @foreach ($docentes as $docente)
                         <tr class="border-t hover:bg-gray-50">
                             <td class="px-4 py-2">{{ $docente->id }}</td>
-                            <td class="px-4 py-2">{{ $docente->codigo }}</td>
                             <td class="px-4 py-2">
                                 {{ $docente->user->primer_nombre . ($docente->user->segundo_nombre ? ' ' . $docente->user->segundo_nombre : '') }}
                             </td>

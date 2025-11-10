@@ -27,13 +27,17 @@
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('docentes.*') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-chalkboard-teacher mr-2"></i> Docentes
             </a>
-            <a href="#"
+            <a href="{{ route('asignaturas.index') }}"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('asignaturas.*') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-book mr-2"></i> Asignaturas
             </a>
-            <a href="#"
+            <a href="{{ route('horarios.index') }}"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('horarios.*') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-clock mr-2"></i> Horarios
+            </a>
+            <a href="{{ route('inscripciones.index') }}"
+                class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('inscripciones.*') ? 'bg-blue-600' : '' }}">
+                <i class="fa-solid fa-file-signature mr-2"></i> Inscribir
             </a>
             <a href="#"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('reportes.*') ? 'bg-blue-600' : '' }}">

@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\EstudianteController;
-use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\Admin\EstudianteController;
+use App\Http\Controllers\Admin\DocenteController;
+use App\Http\Controllers\Admin\AsignaturaController;
+use App\Http\Controllers\Admin\HorarioController;
+use App\Http\Controllers\Admin\InscripcionController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta al dashboard principal (solo usuarios verificados)
@@ -22,6 +25,9 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('estudiantes', EstudianteController::class);
     Route::resource('docentes', DocenteController::class);
+    Route::resource('asignaturas', AsignaturaController::class);
+    Route::resource('horarios', HorarioController::class);
+    Route::resource('inscripciones', InscripcionController::class);
 });
 
 require __DIR__.'/auth.php';

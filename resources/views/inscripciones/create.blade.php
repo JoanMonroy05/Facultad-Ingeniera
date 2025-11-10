@@ -1,18 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        Actualizar Estudiante | Gestión
+        Crear Inscripción | Gestión
     </x-slot>
 
-    <form action="{{ route('docentes.update', $docente->id) }}" method="POST"
+    <form action="{{ route('inscripciones.store') }}" method="POST"
         class="space-y-4 mx-auto p-6 rounded-lg" novalidate>
         @csrf
-        @method('PUT')
 
-        @include('docentes.form')
+        @include('inscripciones.form')
 
         <button type="submit"
             class="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-all m-auto block">
-            Actualizar Docente
+            Guardar Inscripción
         </button>
     </form>
 </x-app-layout>

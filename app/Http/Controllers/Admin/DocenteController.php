@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Docente;
 use App\Models\User;
@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CredencialesEstudiante;
 
-class DocenteController extends Controller
+class DocenteController
 {
     public function index()
     {
@@ -33,7 +33,7 @@ class DocenteController extends Controller
             'segundo_apellido' => 'nullable|string|max:255',
             'especialidad' => 'nullable|string|max:255',
             'titulo' => 'nullable|string|max:255',
-            'telefono' => 'nullable|string|max:20',
+            'telefono' => ['nullable', 'regex:/^(\+57\s?)?3\d{9}$/'],
         ]);
 
         // Generar email automáticamente según el método del modelo User
@@ -91,10 +91,10 @@ class DocenteController extends Controller
             'primer_nombre' => 'required|string|max:255',
             'segundo_nombre' => 'nullable|string|max:255',
             'primer_apellido' => 'required|string|max:255',
-            'segundo_apellido' => 'nullable|string|max:255',
+            'segundo_apellido' => 'required|string|max:255',
             'especialidad' => 'nullable|string|max:255',
             'titulo' => 'nullable|string|max:255',
-            'telefono' => 'nullable|string|max:20',
+            'telefono' => ['nullable', 'regex:/^(\+57\s?)?3\d{9}$/'],
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 

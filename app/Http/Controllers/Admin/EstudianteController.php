@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Estudiante;
 use App\Models\User;
@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CredencialesEstudiante;
 
-class EstudianteController extends Controller
+class EstudianteController
 {
     public function index()
     {
