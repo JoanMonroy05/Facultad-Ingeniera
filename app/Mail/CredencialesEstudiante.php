@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CredencialesEstudiante extends Mailable
+class CredencialesEstudiante extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -41,7 +41,7 @@ class CredencialesEstudiante extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.credenciales-estudiante',
+            view: 'emails.credenciales-usuario',
             with: [
                 'email' => $this->email,
                 'password' => $this->password,

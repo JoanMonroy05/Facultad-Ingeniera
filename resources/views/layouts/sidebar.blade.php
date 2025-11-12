@@ -39,7 +39,7 @@
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('inscripciones.*') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-file-signature mr-2"></i> Inscribir
             </a>
-            <a href="#"
+            <a href="{{ route('consultas.index') }}"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('reportes.*') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-chart-bar mr-2"></i> 
                 Consultas

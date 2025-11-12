@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DocenteController;
 use App\Http\Controllers\Admin\AsignaturaController;
 use App\Http\Controllers\Admin\HorarioController;
 use App\Http\Controllers\Admin\InscripcionController;
+use App\Http\Controllers\Admin\ConsultaHorarioController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta al dashboard principal (solo usuarios verificados)
@@ -27,7 +28,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('docentes', DocenteController::class);
     Route::resource('asignaturas', AsignaturaController::class);
     Route::resource('horarios', HorarioController::class);
-    Route::resource('inscripciones', InscripcionController::class);
+    Route::resource('inscripciones', InscripcionController::class)
+        ->parameters(['inscripciones' => 'inscripcion']);
+    Route::get('consultas', [ConsultaHorarioController::class, 'index'])->name('consultas.index');
+    Route::post('consultas/buscar', [ConsultaHorarioController::class, 'buscar'])->name('consultas.buscar');
 });
 
 require __DIR__.'/auth.php';
