@@ -52,6 +52,38 @@ class InscripcionController
                 ->withInput();
         }
 
+        // ==============================
+        // 🔎 Validar choques de horario
+        // ==============================
+        $asignaturaNueva = Asignatura::with('horarios')->find($request->asignatura_id);
+
+        if ($asignaturaNueva && $asignaturaNueva->horarios->isNotEmpty()) {
+            $inscripcionesActuales = Inscripcion::where('estudiante_id', $request->estudiante_id)
+                ->with('asignatura.horarios')
+                ->get();
+
+            foreach ($inscripcionesActuales as $inscripcion) {
+                foreach ($inscripcion->asignatura->horarios as $horarioExistente) {
+                    foreach ($asignaturaNueva->horarios as $horarioNuevo) {
+                        if (
+                            $horarioExistente->dia === $horarioNuevo->dia &&
+                            (
+                                ($horarioNuevo->hora_inicio >= $horarioExistente->hora_inicio && $horarioNuevo->hora_inicio < $horarioExistente->hora_fin) ||
+                                ($horarioNuevo->hora_fin > $horarioExistente->hora_inicio && $horarioNuevo->hora_fin <= $horarioExistente->hora_fin)
+                            )
+                        ) {
+                            return redirect()->back()
+                                ->withErrors([
+                                    'asignatura_id' => 'El estudiante ya tiene una materia en ese mismo horario (' .
+                                        $horarioNuevo->dia . ' ' . $horarioNuevo->hora_inicio . ' - ' . $horarioNuevo->hora_fin . ').'
+                                ])
+                                ->withInput();
+                        }
+                    }
+                }
+            }
+        }
+
         Inscripcion::create($validated);
 
         return redirect()->route('inscripciones.index')
@@ -89,6 +121,39 @@ class InscripcionController
             return redirect()->back()
                 ->withErrors(['asignatura_id' => 'Este estudiante ya está inscrito en esa asignatura.'])
                 ->withInput();
+        }
+
+        // ==============================
+        // 🔎 Validar choques de horario (también en edición)
+        // ==============================
+        $asignaturaNueva = Asignatura::with('horarios')->find($request->asignatura_id);
+
+        if ($asignaturaNueva && $asignaturaNueva->horarios->isNotEmpty()) {
+            $inscripcionesActuales = Inscripcion::where('estudiante_id', $request->estudiante_id)
+                ->where('id', '!=', $inscripcion->id)
+                ->with('asignatura.horarios')
+                ->get();
+
+            foreach ($inscripcionesActuales as $insc) {
+                foreach ($insc->asignatura->horarios as $horarioExistente) {
+                    foreach ($asignaturaNueva->horarios as $horarioNuevo) {
+                        if (
+                            $horarioExistente->dia === $horarioNuevo->dia &&
+                            (
+                                ($horarioNuevo->hora_inicio >= $horarioExistente->hora_inicio && $horarioNuevo->hora_inicio < $horarioExistente->hora_fin) ||
+                                ($horarioNuevo->hora_fin > $horarioExistente->hora_inicio && $horarioNuevo->hora_fin <= $horarioExistente->hora_fin)
+                            )
+                        ) {
+                            return redirect()->back()
+                                ->withErrors([
+                                    'asignatura_id' => 'El estudiante ya tiene una materia en ese mismo horario (' .
+                                        $horarioNuevo->dia . ' ' . $horarioNuevo->hora_inicio . ' - ' . $horarioNuevo->hora_fin . ').'
+                                ])
+                                ->withInput();
+                        }
+                    }
+                }
+            }
         }
 
         $inscripcion->update($validated);

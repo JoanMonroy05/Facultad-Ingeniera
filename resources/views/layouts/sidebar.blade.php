@@ -51,17 +51,13 @@
             <div class="pt-4 pb-2 text-xs font-semibold text-blue-300 uppercase">
                 Mis Clases
             </div>
-            <a href="#"
+            <a href="{{ route('mi-horario') }}"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('docente.horarios') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-clock mr-2"></i> Mi Horario
             </a>
-            <a href="#"
-                class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('docente.asignaturas') ? 'bg-blue-600' : '' }}">
-                <i class="fa-solid fa-book mr-2"></i> Tomar Asistencia
-            </a>
-            <a href="#"
-                class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('docente.estudiantes') ? 'bg-blue-600' : '' }}">
-                <i class="fa-solid fa-users mr-2"></i> Mis Estudiantes
+            <a href="{{ route('mi-horario.estudiantes') }}"
+                class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('docente.horarios') ? 'bg-blue-600' : '' }}">
+                <i class="fa-solid fa-users mr-2"></i> Estudiantes Asignados
             </a>
         @endrole
 
@@ -70,13 +66,9 @@
             <div class="pt-4 pb-2 text-xs font-semibold text-blue-300 uppercase">
                 Mi Academia
             </div>
-            <a href="#"
+            <a href="{{ route('mi-horario') }}"
                 class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('estudiante.horario') ? 'bg-blue-600' : '' }}">
                 <i class="fa-solid fa-calendar mr-2"></i> Mi Horario
-            </a>
-            <a href="#"
-                class="block px-3 py-2 rounded hover:bg-blue-600 {{ request()->routeIs('estudiante.calificaciones') ? 'bg-blue-600' : '' }}">
-                <i class="fa-solid fa-star mr-2"></i> Calificaciones
             </a>
         @endrole
 

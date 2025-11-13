@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Gestión de Inscripciones
+        Inscripciones | Gestión
     </x-slot>
 
     <div>

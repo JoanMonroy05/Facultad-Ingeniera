@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Actualizar Estudiante | Gestión
+        Actualizar Docente | Gestión
     </x-slot>
 
     <form action="{{ route('docentes.update', $docente->id) }}" method="POST"

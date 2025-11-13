@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Crear Horario | Gestión
+        Actualizar Horario | Gestión
     </x-slot>
     {{-- Formulario para crear un horario --}}
     <form action="{{ route('horarios.update', $horario->id) }}" method="POST"

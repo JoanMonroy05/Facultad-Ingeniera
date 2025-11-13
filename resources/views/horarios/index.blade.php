@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Gestión de Horarios
+        Crear Horarios | Gestión
     </x-slot>
 
     <div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Crear Estudiante | Gestión
+        Crear Docente | Gestión
     </x-slot>
 
     <form action="{{ route('docentes.store') }}" method="POST" class="space-y-4 mx-auto p-6 rounded-lg" novalidate>

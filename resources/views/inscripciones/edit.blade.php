@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Editar Inscripción | Gestión
+        Actualizar Inscripción | Gestión
     </x-slot>
 
     <form action="{{ route('inscripciones.update', $inscripcion->id) }}" method="POST"

@@ -8,11 +8,11 @@
             @csrf
             @include('profile.partials.alertas')
             @include('consultas.form')
-            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Consultar
-            </button>
-    </div>
-    </form>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Consultar
+                </button>
+            </div>
+        </form>
 
     {{-- Resultados --}}
     @if($tipo)
@@ -23,14 +23,14 @@
             <p class="text-gray-600">No tiene horarios asignados.</p>
         @else
             {{-- Tabla 1 --}}
-            @include('consultas.horario')
+            @include('components.horarios.horario')
             {{-- Tabla 2 --}}
             @if ($tipo === 'estudiante')
                 <h2 class="text-xl font-bold mb-4">Detalle de Asignaturas y Docentes</h2>
-                @include('consultas.info_horario_estudiante')
+                @include('components.horarios.info_horario_estudiante')
             @else
                 <h2 class="text-xl font-bold mb-4">Detalle de Asignaturas y Estudiantes</h2>
-                @include('consultas.info_horario_docente')
+                @include('components.horarios.info_horario_docente')
             @endif
         @endif
     @endif

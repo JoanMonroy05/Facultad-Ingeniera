@@ -14,15 +14,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// 🔒 Rutas protegidas (solo autenticados)
+// Rutas protegidas (solo autenticados)
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/mi-horario', [ConsultaHorarioController::class, 'miHorario'])
+        ->name('mi-horario');
+    Route::get('/mi-horario/estudiantes', [ConsultaHorarioController::class, 'miHorarioEstudiantes'])
+        ->name('mi-horario.estudiantes');
 });
 
-// 🔐 Rutas para administradores
+// Rutas para administradores
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('estudiantes', EstudianteController::class);
     Route::resource('docentes', DocenteController::class);
