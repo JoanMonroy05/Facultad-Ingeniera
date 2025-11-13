@@ -13,7 +13,7 @@ class AsignaturaController
      */
     public function index()
     {
-        $asignaturas = Asignatura::orderBy('nombre')->get();
+        $asignaturas = Asignatura::all();
         return view('asignaturas.index', compact('asignaturas'));
     }
 

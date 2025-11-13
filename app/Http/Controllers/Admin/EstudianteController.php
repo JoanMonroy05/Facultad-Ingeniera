@@ -14,7 +14,7 @@ class EstudianteController
 {
     public function index()
     {
-        $estudiantes = Estudiante::with('user')->get();
+        $estudiantes = Estudiante::with('user')->orderBy('codigo', 'asc')->get();
         return view('estudiantes.index', compact('estudiantes'));
     }
 
